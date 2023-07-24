@@ -5,7 +5,8 @@
 - 使用 `TensorRT` 原生`API`重建 `YOLO` 网络，将 `PyTorch` 模型转为`.plan` 序列化文件，加速模型推理；
 - 基于 `TensorRT 8.2.4` 版本，具体环境见下方的环境构建部分；
 - 主要参考 [tensorrtx](https://github.com/wang-xinyu/tensorrtx) 项目，但作者本人根据自己编程习惯，做了大量改动；
-- 本项目使用了cuda加速预处理，未使用cuda预处理的代码链接为：[no_cuda_preprocess](https://github.com/emptysoal/TensorRT-v8-YOLOv5-v5.0/tree/no-cuda-preproc)
+
+![](samples/_002.jpeg)
 
 ## 项目特点
 
@@ -119,8 +120,9 @@ docker pull nvcr.io/nvidia/tensorrt:22.04-py3
 ## 运行项目
 
 1. 获取 `.wts` 文件
-   - 主要过程为：把本项目的`pth2wts.py`文件复制到官方`yolov5-v5.0`目录下，在官方`yolov5-v5.0`目录下运行 `python pth2wts.py`，得到`para.wts`文件，
-   - 具体过程可参考下面步骤
+
+- 主要过程为：把本项目的`pth2wts.py`文件复制到官方`yolov5-v5.0`目录下，在官方`yolov5-v5.0`目录下运行 `python pth2wts.py`，得到`para.wts`文件
+- 具体过程可参考下面步骤
 
 ```bash
 git clone -b v5.0 https://github.com/ultralytics/yolov5.git
@@ -133,8 +135,9 @@ python pth2wts.py
 ```
 
 2. 构建 `.plan` 序列化文件并推理
-   - 主要过程为：把上一步生成的`para.wts`文件复制到本项目目录下，在本项目中依次运行`make`和`./trt_infer`
-   - 具体过程可参考下面步骤
+
+- 主要过程为：把上一步生成的`para.wts`文件复制到本项目目录下，在本项目中依次运行`make`和`./trt_infer`
+- 具体过程可参考下面步骤
 
 ```bash
 cp {ultralytics}/yolov5/para.wts {tensorrt}/
