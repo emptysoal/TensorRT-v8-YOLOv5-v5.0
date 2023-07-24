@@ -1,6 +1,7 @@
 #include "public.h"
 #include "common.h"
 #include "utils.h"
+#include "preprocess.h"
 #include "calibrator.h"
 
 using namespace nvinfer1;
@@ -232,8 +233,8 @@ int run()
     }
 
     // prepare input data and output data ---------------------------
-    float inputData[3 * INPUT_H * INPUT_W];
-    float outputData[OUTPUT_SIZE];
+    static float inputData[3 * INPUT_H * INPUT_W];
+    static float outputData[OUTPUT_SIZE];
     //  prepare input and output space on device
     std::vector<void *> vBufferD (2, nullptr);
     for (int i = 0; i < 2; i++)
@@ -258,8 +259,7 @@ int run()
 
         auto start = std::chrono::system_clock::now();
 
-        cv::Mat pr_img = preprocess_img(img, INPUT_W, INPUT_H); // letterbox resize
-        imagePreProcess(pr_img, inputData, INPUT_W, INPUT_H);  // put image data on inputData
+        preprocess(img, inputData, INPUT_H, INPUT_W);  // put image data on inputData
 
         inference_one(context, inputData, outputData, vBufferD, vTensorSize);
 

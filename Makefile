@@ -11,8 +11,8 @@ CC = nvcc
 
 all: trt_infer
 
-trt_infer: trt_infer.cpp yololayer.cu calibrator.cpp
-	$(CC) -std=c++11 trt_infer.cpp yololayer.cu calibrator.cpp -o trt_infer $(INCLUDE) $(LDFLAG) -lz
+trt_infer: trt_infer.cpp yololayer.cu preprocess.cu calibrator.cpp
+	$(CC) -std=c++11 trt_infer.cpp yololayer.cu preprocess.cu calibrator.cpp -o trt_infer $(INCLUDE) $(LDFLAG) -lz
 
 clean:
 	rm -rf ./trt_infer ./*.plan ./*.cache

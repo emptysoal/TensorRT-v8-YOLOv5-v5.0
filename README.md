@@ -16,21 +16,21 @@
 | 2    | Detect Plugin 继承自 IPluginV2IOExt             | Detect Plugin 继承自 IPluginV2DynamicExt |                                              |
 | 3    | Detect Plugin 被编译为动态链接库                | Detect Plugin 直接编译到最终的可执行文件 |                                              |
 | 4    | 异步推理（context.enqueue）                     | 同步推理（context.executeV2）            | 作者亲测在速度方面无差别，同步写法更简便     |
-| 5    | INT8量化时，采用OpenCV的dnn模块将图像转换为张量 | INT8量化时，自定义的方法将图像转换为张量 |                                              |
-| 6    | cmake + make编译                                | make编译                                 | 个人认为自己书写 Makefile 更加直观           |
+| 5    | INT8量化时，采用OpenCV的dnn模块将图像转换为张量 | INT8量化时，自定义的方法将图像转换为张量 | 后者可适用更多情况                           |
+| 6    | C++加opencv实现预处理                           | cuda编程实现预处理加速                   | v5.0之后的版本也有，两种不同的实现           |
+| 7    | cmake + make编译                                | make编译                                 | 个人认为自己书写 Makefile 更加直观           |
 
 除上述外，还有很多其他编码上的不同，不一一赘述。
 
 ## 推理速度
 
-| FP32  | FP16  | INT8 |
-| :---: | :---: | :--: |
-| 28 ms | 14 ms | 9 ms |
+- 基于GPU：GeForce RTX 2080 Ti
 
-- 备注：
+| FP32  | FP16 | INT8 |
+| :---: | :--: | :--: |
+| 23 ms | 7 ms | 4 ms |
 
-1. 本项目的推理时间包括：预处理、前向传播、后处理，tensorrtx 项目仅计算了前向传播时间；
-2. 基于GPU：GeForce RTX 2080 Ti
+备注：本项目的推理时间包括：预处理、前向传播、后处理，tensorrtx 项目仅计算了前向传播时间。
 
 ## 环境构建
 
