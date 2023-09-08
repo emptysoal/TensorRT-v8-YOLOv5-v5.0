@@ -1,4 +1,5 @@
 # Speed up YOLOv5-v5.0 inferencing with TensorRT v8.2
+[README中文版](https://github.com/emptysoal/TensorRT-v8-YOLOv5-v5.0/blob/main/README-chinese.md)
 
 ## Introduction
 
