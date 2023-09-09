@@ -43,7 +43,7 @@ Note: The inference time of this project includes: pre-processing, model forward
 - GPU：GeForce RTX 2080 Ti
 - docker，nvidia-docker
 
-### Base image pull
+### Pull base image
 
 ```bash
 docker pull nvcr.io/nvidia/tensorrt:22.04-py3
