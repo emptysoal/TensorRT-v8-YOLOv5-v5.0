@@ -5,7 +5,7 @@
 - 使用 `TensorRT` 原生`API`构建 `YOLO` 网络，将 `PyTorch` 模型转为`.plan` 序列化文件，加速模型推理；
 - 基于 `TensorRT 8.2.4` 版本，具体环境见下方的环境构建部分；
 - 主要参考 [tensorrtx](https://github.com/wang-xinyu/tensorrtx) 项目，但作者本人根据自己编程习惯，做了大量改动；
-- 未使用Cuda加速图像预处理的项目链接：[no_cuda_preproc](https://github.com/emptysoal/TensorRT-v8-YOLOv5-v5.0/tree/no-cuda-preproc)
+- 未使用Cuda加速图像预处理的项目链接：[no_cuda_preproc](https://github.com/emptysoal/TensorRT-v8-YOLOv5-v5.0/tree/cpp-preproc)
 
 ![](samples/_002.jpeg)
 
