@@ -232,8 +232,8 @@ int run()
     }
 
     // prepare input data and output data ---------------------------
-    float inputData[3 * INPUT_H * INPUT_W];
-    float outputData[OUTPUT_SIZE];
+    static float inputData[3 * INPUT_H * INPUT_W];
+    static float outputData[OUTPUT_SIZE];
     //  prepare input and output space on device
     std::vector<void *> vBufferD (2, nullptr);
     for (int i = 0; i < 2; i++)
